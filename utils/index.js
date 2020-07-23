@@ -15,6 +15,7 @@ function randInt(min, max){
 const fs = require('fs');
 
 module.exports = {
+    reddit: require('./reddit'),
     /**
      * Get configuration object from config file
      * @returns {any} Config object

@@ -3,6 +3,7 @@
  */
 
 module.exports = {
+    cute: require('./cute'),
     feedback: require('./feedback'),
     github: require('./github'),
     horoscope: require('./horoscope'),
