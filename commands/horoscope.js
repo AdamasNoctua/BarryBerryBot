@@ -8,6 +8,7 @@ const markov = new Markov(data, {stateSize: 2});
 markov.buildCorpus();
 
 // Markov chain option
+// noinspection JSUnusedGlobalSymbols
 const options = {
     maxTries: 20, // Give up if I don't have a sentence after 20 tries (default is 10)
     filter: result => {
@@ -18,7 +19,7 @@ const options = {
 module.exports = {
     name: '!horoscope',
     description: 'Get your personal horoscope for today',
-    execute(msg, text){
+    execute(msg){
         let result = '';
         let iterations = require('../utils').randInt(3, 6);
         for(let i = 0; i < iterations; i++){

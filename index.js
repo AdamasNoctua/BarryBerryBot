@@ -23,7 +23,7 @@ Object.keys(botCommands).map(key => {
 bot.commands.set('!help', {
     name: '!help',
     description: 'Display help message',
-    execute(msg, text){
+    execute(msg){
         let helpText = 'Here\'s a list of currently available commands:';
         Object.keys(botCommands).map(key => {
             // Current format: **<name>** — *<description>*
@@ -44,7 +44,7 @@ bot.on('message', msg => {
 
     // Separate command from the rest of the message
     let spaceIndex = msg.content.indexOf(' ');
-    let command = '';
+    let command;
     let text = ''; // Is needed as arguments for some commands that require raw text
     if(spaceIndex === -1) {
         command = msg.content.toLowerCase()

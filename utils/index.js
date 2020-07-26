@@ -2,16 +2,6 @@
  * @module This module contains a set of functions that are repeatedly used in program
  */
 
-/**
- * Generate a random integer between from range [min, max]
- * @param min Minimum value of random integer
- * @param max Maximum value of random integer
- * @returns {number} Random integer
- */
-function randInt(min, max){
-    return Math.floor((Math.random() * max) + min)
-}
-
 const fs = require('fs');
 
 module.exports = {
@@ -29,8 +19,8 @@ module.exports = {
      * @param max Maximum value of random integer
      * @returns {number} Random integer
      */
-    randInt: (min = 0, max) => {
-        return randInt(min, max)
+    randInt: (min, max) => {
+        return Math.floor((Math.random() * max) + min)
     },
     /**
      * Pick random object from array
@@ -38,7 +28,7 @@ module.exports = {
      * @returns {*} Random object from array
      */
     choice: array => {
-        return array[randInt(0, array.length-1)]
+        return array[module.exports.randInt(0, array.length - 1)]
     },
     /**
      * Split text into arguments
