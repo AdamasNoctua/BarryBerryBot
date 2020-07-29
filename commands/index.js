@@ -7,6 +7,7 @@ module.exports = {
     feedback: require('./feedback'),
     github: require('./github'),
     horoscope: require('./horoscope'),
+    kekw: require('./kekw'),
     love: require('./love'),
     pick: require('./pick'),
     role: require('./roll'),
