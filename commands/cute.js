@@ -7,7 +7,7 @@ const subList = ['aww', 'eyebleach', 'meow_irl', 'woof_irl', 'rarepuppers', 'Ani
 module.exports = {
     name: '!cute',
     description: 'Get a cute image from reddit dot com',
-    execute(msg){
+    execute: msg => {
         let posts = []; // Collection of posts from subList
         let completeRequests = 0; // Amount of completed async requests
         for (let i = 0; i < subList.length; i++){ // For each subreddit in the list

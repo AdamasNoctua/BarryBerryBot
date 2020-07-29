@@ -1,7 +1,7 @@
 module.exports = {
     name: '!github',
     description: 'Get the link to the github page of the bot',
-    execute(msg){
+    execute: msg => {
         msg.channel.send({embed: {
                 title: 'BarryBerryBot GitHub page',
                 color: 'FCE4EC',

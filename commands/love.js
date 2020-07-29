@@ -1,22 +1,21 @@
-const usedToday = new Set();
-let lastDay = new Date();
+const usedToday = new Set(); // Set of users who used !love today
+let lastDay = new Date(); //
 
 module.exports = {
     name: '!love',
     description: 'BarryBerryBot loves everyone, but it loves some people more than others. Learn how much ' +
         'BBB loves you today',
-    execute(msg){
-        let today = new Date();
-        if(lastDay.getUTCDate() !== today.getUTCDate() || lastDay.getUTCMonth() !== today.getUTCMonth() ||
-        lastDay.getUTCFullYear() !== today.getUTCFullYear()){
-            lastDay = today;
+    execute: msg => {
+        if(!require('../utils').isToday(lastDay)){
+            lastDay = new Date();
             usedToday.clear();
         }
+        // If user is on CD, send this message instead
         if(usedToday.has(msg.author.id)){
             msg.reply('*!love* is on cooldown for you, please try tomorrow.')
         }
         else{
-            usedToday.add(msg.author.id);
+            usedToday.add(msg.author.id); // Add user to the list
             let text = `There is ${require('../utils').randInt(0, 100)}% love between ${msg.author} and BarryBerryBot today :heart:`;
             msg.channel.send(text, {tts: true})
         }

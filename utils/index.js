@@ -39,5 +39,15 @@ module.exports = {
         let trimmed = text.trim();
         if(trimmed.length === 0) return []; // Without it empty string split returns ['']
         return trimmed.split(/\s+/)
+    },
+    /**
+     * Check if provided date (UTC time) is the same day is today
+     * @param date Date to be checked
+     * @returns {boolean} Returns true if provided date is the same day (same date, month, and year) as today, false - otherwise
+     */
+    isToday: date => {
+        let today = new Date();
+        return date.getUTCDate() === today.getUTCDate() && date.getUTCMonth() === today.getUTCMonth() &&
+            date.getUTCFullYear() === today.getUTCFullYear()
     }
 }

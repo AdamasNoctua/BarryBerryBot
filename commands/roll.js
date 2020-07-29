@@ -1,7 +1,7 @@
 module.exports = {
     name: '!roll',
     description: 'Roll an X-sided die. (Usage: !roll X)',
-    execute(msg, text){
+    execute: (msg, text) => {
         let args = require('../utils').splitArgs(text); // Split arguments by whitespace
         // Check if argument is a number
         if(isNaN(args[0])){
