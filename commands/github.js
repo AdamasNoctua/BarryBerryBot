@@ -4,7 +4,7 @@ module.exports = {
     execute: msg => {
         msg.channel.send({embed: {
                 title: 'BarryBerryBot GitHub page',
-                color: '#ffffff',
+                color: '#FAFAFA',
                 description: 'BBB\'s GitHub repository. Source code, issue tracking, pull requests, and additional info',
                 url: 'https://github.com/AdamasNoctua/BarryBerryBot',
                 // Link to the GitHub octocat image
