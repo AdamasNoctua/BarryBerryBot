@@ -1,5 +1,5 @@
 const reddit = require('../utils').reddit;
-const MessageAttachment = require('discord.js').MessageAttachment;
+
 // List of cute subreddits to take images from
 const subList = ['aww', 'eyebleach', 'meow_irl', 'woof_irl', 'rarepuppers', 'AnimalsBeingDerps',
 'AnimalsBeingBros', 'blep', 'IllegallySmolCats', 'IllegallySmolDogs', 'birbs'];
@@ -20,8 +20,7 @@ module.exports = {
                 // When all requests are completed pick a random one and post the image to the channel
                 if(completeRequests === subList.length){
                     let post = require('../utils').choice(posts).data;
-                    let attachment = new MessageAttachment(post.url);
-                    msg.channel.send(attachment);
+                    msg.channel.send({files: [{attachment: post.url}]});
                 }
             })
         }

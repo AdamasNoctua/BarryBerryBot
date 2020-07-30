@@ -1,5 +1,5 @@
 config.json
 package-lock.json
-text
+bin
 node_modules
 .idea

@@ -3,7 +3,7 @@ const fs = require('fs');
 const utils = require('../utils');
 
 // Read training data from file and split it into sentences
-let data = fs.readFileSync('text/astrology_training.txt', 'utf-8').split(/\n/g);
+let data = fs.readFileSync('bin/astrology_training.txt', 'utf-8').split(/\n/g);
 // Set up Markov chain
 const markov = new Markov(data, {stateSize: 2});
 markov.buildCorpus();
@@ -17,13 +17,13 @@ const options = {
     }
 }
 
-const filePath = 'text/today_horoscope.json'; // Path to a file with today's horoscopes
+const filePath = 'bin/today_horoscope.json'; // Path to a file with today's horoscopes
 const signs = ['aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra', 'scorpio', 'sagittarius', 'capricorn',
 'aquarius', 'pisces']; // List of zodiac signs
 
 /**
  * Generate horoscopes for each sign
- * @returns {{}}
+ * @returns {{}} Dictionary where key is a zodiac sign, and value is a Markov chain generated horoscope
  */
 function generateHoroscopes(){
     let result = {};
@@ -40,7 +40,7 @@ function generateHoroscopes(){
 
 module.exports = {
     name: '!horoscope',
-    description: 'Get your personal horoscope for today',
+    description: 'Get today\'s Markov chain generated horoscope for your sign. (Usage: !horoscope <sign>)',
     execute: (msg, text) => {
         let horoscope =  {}; // Object that contains horoscope data
 
@@ -72,8 +72,8 @@ module.exports = {
         let args = utils.splitArgs(text);
         if (args.length > 0){
             let sign = args[0].toLowerCase();
-            if(signs.indexOf(sign) !== -1){
-                msg.channel.send(`**${sign.toUpperCase()}**\n${horoscope.data[sign]}`)
+            if(signs.indexOf(sign) !== -1){ // Check if provided sign exists
+                msg.channel.send(`**${sign.toUpperCase()}**\n${horoscope.data[sign]}`) // Send the horoscope
             }
             else{
                 msg.reply(`"${sign}" is not a valid zodiac sign`)
