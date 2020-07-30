@@ -10,7 +10,7 @@ module.exports = {
             .replace(/T/, ' ') // replace T with a space
             .replace(/\..+/, '') // remove everything after the dot
         // Write the message to 'feedback.txt'
-        fs.appendFile('bin/feedback.txt', `[${dateString}] ${msg.author.tag}: ${text}\n`, err => {
+        fs.appendFile('bin/feedback.txt', `[${dateString}]: ${text}\n`, err => {
             if(err){
                 // Error handling
                 console.error(err.message);
